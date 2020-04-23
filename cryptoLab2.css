@@ -1,0 +1,12 @@
+body{
+    margin:0;
+}
+.form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    width: 270px;
+}
+label{
+    line-height: 30px;
+}
