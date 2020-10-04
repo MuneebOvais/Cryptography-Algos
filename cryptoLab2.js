@@ -462,7 +462,6 @@ function railFenceCipher(mode)
 function createMatrix(plainText, key)
 {
     let matrix = [...Array(key)].map(i => Array(plainText.length).fill(null));
-    console.log(matrix)
     return matrix;
 }
 function getKey()
