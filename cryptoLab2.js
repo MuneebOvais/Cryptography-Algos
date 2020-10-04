@@ -116,10 +116,12 @@ function shiftCipher(mode)
 function vigenereCipher(mode)
 {
     var outputText="";
-    key=inputs[0].value;
+    var key=inputs[0].value;
     if(mode==="Encrypt")
     {
         var inputText=inputs[1].value;
+        key =  generateVigenereKey(key, inputText);
+        console.log(key);
         for(var i=0; i<key.length; i++)
         {
             var keyIndex=alphabets.indexOf(key[i]);
@@ -133,16 +135,40 @@ function vigenereCipher(mode)
     else
     {
         var inputText=inputs[2].value;
+        key =  generateVigenereKey(key, inputText);
+        console.log(key);
         for(var i=0; i<key.length; i++)
         {
             var keyIndex=alphabets.indexOf(key[i]);
             var inputIndex=alphabets.indexOf(inputText[i]);
 
             inputIndex=(inputIndex-keyIndex)%26;
+
+            if(inputIndex < 0){
+                inputIndex += 26;
+            }
+            
             outputText+=alphabets[inputIndex];
         }
         inputs[1].value=outputText;
     }
+}
+function generateVigenereKey(key, inputText){
+    if(key.length === inputText.length){
+        //pass if statement as it is
+    }
+    else if(key.length < inputText.length){
+        let i = 0
+        while(key.length !== inputText.length){
+            key += key[i];
+            i += 1;
+        }
+    }
+    else{
+       key = key.slice(0, inputText.length);
+    }
+
+    return key;
 }
 
 function substitutionCipher(mode)
