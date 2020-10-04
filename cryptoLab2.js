@@ -550,3 +550,12 @@ function getRFplainText(outputText, matrix)
     }
     return outputText;
 }
+
+// function railFenceCipher(mode){
+//     const key = Number(inputs[0].value);
+//     if(mode === 'Encrypt'){
+//         const inputText = inputs[1].value;
+        
+        
+//     }
+// }
