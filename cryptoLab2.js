@@ -462,10 +462,6 @@ function railFenceCipher(mode)
 function createMatrix(plainText, key)
 {
     let matrix = [...Array(key)].map(i => Array(plainText.length).fill(null));
-    // for(var i=0; i<key; i++)
-    // {
-    //     matrix[i]=new Array(plainText.length);
-    // }
     console.log(matrix)
     return matrix;
 }
@@ -551,12 +547,3 @@ function getRFplainText(outputText, matrix)
     }
     return outputText;
 }
-
-// function railFenceCipher(mode){
-//     const key = Number(inputs[0].value);
-//     if(mode === 'Encrypt'){
-//         const inputText = inputs[1].value;
-        
-        
-//     }
-// }
