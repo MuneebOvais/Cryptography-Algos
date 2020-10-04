@@ -461,11 +461,12 @@ function railFenceCipher(mode)
 
 function createMatrix(plainText, key)
 {
-    matrix=new Array(key);
-    for(var i=0; i<key; i++)
-    {
-        matrix[i]=new Array(plainText.length);
-    }
+    let matrix = [...Array(key)].map(i => Array(plainText.length).fill(null));
+    // for(var i=0; i<key; i++)
+    // {
+    //     matrix[i]=new Array(plainText.length);
+    // }
+    console.log(matrix)
     return matrix;
 }
 function getKey()
