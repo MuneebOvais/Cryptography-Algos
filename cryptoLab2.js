@@ -451,12 +451,17 @@ function railFenceCipher(mode)
     var inputText=getInputText(mode);
     var key=Number(getKey());
 
-    var matrix = createMatrix(inputText, key);
-    matrix = fillMatrix(matrix, inputText, mode);
+    if(key !== 1){
+        var matrix = createMatrix(inputText, key);
+        matrix = fillMatrix(matrix, inputText, mode);
 
-    mode==="Encrypt" ?  outputText=getRFcipher("", matrix) : outputText=getRFplainText("", matrix);
+        mode==="Encrypt" ?  outputText=getRFcipher("", matrix) : outputText=getRFplainText("", matrix);
 
-    setOutputText(outputText, mode);
+        setOutputText(outputText, mode);
+    }
+    else{
+        setOutputText(inputText, mode);
+    }
 }
 
 function createMatrix(plainText, key)
