@@ -5,6 +5,14 @@ var algorithm="Shift Cipher";
 
 alphabets="abcdefghijklmnopqrstuvwxyz";
 
+var dict={
+    a:'p',b:'h',c:'q',d:'g',e:'i',f:'u',g:'m',h:'e',i:'a',j:'y',k:'l',l:'n',m:'o',n:'f',o:'d',p:'x',q:'j',r:'k',s:'r',t:'c',u:'v',v:'s',w:'t',x:'z',y:'w',z:'b'
+};
+var table = document.getElementsByTagName('TABLE')[0];
+table.style.display = 'none';
+generateSubstitutionTable(dict);
+
+
 selects[1].addEventListener("change",function()
 {
     button.innerHTML=selects[1].options[selects[1].selectedIndex].text;
@@ -17,11 +25,13 @@ selects[0].addEventListener("change",function()
     if(algorithm==="Shift Cipher" || algorithm==="RailFence Cipher")
     {
         inputs[0].disabled=false;
+        table.style.display = 'none';
         inputs[0].type="Number";
     }
     else if(algorithm==="Vigenere Cipher" || algorithm==="Playfair Cipher")
     {
         inputs[0].disabled=false;
+        table.style.display = 'none';
         inputs[0].type="text";
     }
     else
@@ -172,10 +182,8 @@ function generateVigenereKey(key, inputText){
 }
 
 function substitutionCipher(mode)
-{
-    var dict={
-        a:'p',b:'h',c:'q',d:'g',e:'i',f:'u',g:'m',h:'e',i:'a',j:'y',k:'l',l:'n',m:'o',n:'f',o:'d',p:'x',q:'j',r:'k',s:'r',t:'c',u:'v',v:'s',w:'t',x:'z',y:'w',z:'b'
-    };
+{   
+    table.style.display = '';
     var outputText="";
 
     if(mode==="Encrypt")
@@ -195,6 +203,26 @@ function substitutionCipher(mode)
             char!==" " ? outputText+=Object.keys(dict).find( key => dict[key]==char ) : outputText+=" ";
         }
         inputs[1].value=outputText;
+    }
+}
+
+function generateSubstitutionTable(dict){
+
+    //filling alphabets row for plaintext
+    let row = table.firstElementChild.firstElementChild;
+    console.log(row);
+    let cell ='';
+    for(char of alphabets){
+        cell = row.insertCell(alphabets.indexOf(char)+1);
+        cell.innerHTML = char;
+    }
+
+    //filling alphabets row for ciphertext
+    row = table.lastElementChild.lastElementChild;
+    let i = 1;
+    for(key in dict){
+        cell = row.insertCell(i++);
+        cell.innerHTML = dict[key];
     }
 }
 
