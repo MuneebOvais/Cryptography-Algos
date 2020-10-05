@@ -33,7 +33,7 @@ th, td{
 table{
     margin-top: 15px;
 }
-label, button, table{
+label, button, table, h1{
     color: white;
 }
 button{
@@ -44,4 +44,7 @@ button{
     border-radius: 4px;
     cursor: pointer;
     outline: none;
+}
+h1{
+    text-align: center;
 }
